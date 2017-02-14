@@ -1,29 +1,15 @@
 import java.util.Scanner;
 
-/**
- * Created by Ovi28 on 8/2/2017.
- */
-public class Main {
 
+class Main {
+
+    private static float firstSide = 0, secondSide = 0, thirdSide = 0;
     public static void main(String[] args) {
+        getInput();
+        checkTriangle();
+    }
 
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("First number:");
-        String input1 = scanner.next();
-        System.out.println("Second number:");
-        String input2 = scanner.next();
-        System.out.println("Third number:");
-        String input3 = scanner.next();
-
-        float firstSide = 0, secondSide = 0, thirdSide = 0;
-        try {
-            firstSide = Integer.parseInt(input1);
-            secondSide = Integer.parseInt(input2);
-            thirdSide = Integer.parseInt(input3);
-        } catch (NumberFormatException ignored) {
-
-        }
-
+    private static void checkTriangle(){
         if (firstSide <= 0 || secondSide <= 0 || thirdSide <= 0) {
             System.out.println("The numbers are not valid");
         } else if (firstSide + secondSide < thirdSide || firstSide + thirdSide < secondSide || secondSide + thirdSide < firstSide) {
@@ -36,5 +22,27 @@ public class Main {
             System.out.println("It's scalene");
         }
 
+    }
+
+    private static void getInput(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("First number:");
+        String input1 = scanner.next();
+        System.out.println("Second number:");
+        String input2 = scanner.next();
+        System.out.println("Third number:");
+        String input3 = scanner.next();
+
+        checkIfNumbersAreValid(input1,input2,input3);
+    }
+
+    private static void checkIfNumbersAreValid(String input1, String input2, String input3){
+        try {
+            firstSide = Integer.parseInt(input1);
+            secondSide = Integer.parseInt(input2);
+            thirdSide = Integer.parseInt(input3);
+        } catch (NumberFormatException ignored) {
+
+        }
     }
 }
